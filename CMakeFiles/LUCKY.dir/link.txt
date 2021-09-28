@@ -1,1 +1,0 @@
-/usr/bin/c++    -rdynamic CMakeFiles/LUCKY.dir/src/main.cpp.o CMakeFiles/LUCKY.dir/src/log.cpp.o CMakeFiles/LUCKY.dir/src/lexer.cpp.o  -o LUCKY 
