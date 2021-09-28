@@ -1,0 +1,9 @@
+#include "testfile.luck"
+#import "anotherTestFile.luck"
+
+def myFakeFunction(arg1, arg2){
+  print "Test Data";
+  if someCase > someOtherVar{
+    print
+  }
+}
