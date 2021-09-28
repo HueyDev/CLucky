@@ -1,0 +1,8 @@
+#!/bin/bash
+
+git config --global user.email "dryancarr@gmail.com"
+git config --global user.name "Ryan Carr"
+
+git add .
+git commit
+
