@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <map>
 
 #undef EOF
 
@@ -23,7 +24,7 @@ enum TokenType{
     EXTENDS, SWITCH, FOREACH, DO, IMPORT, INCLUDE,
 
     //Other
-    EOF
+    EOF, INVALID
 
 };
 
@@ -44,6 +45,7 @@ struct Token{
 class Lexer{
 
     std::vector<Token*> data;
+    std::map<std::string, TokenType> keywords;
 
     int current;
     int start;
@@ -56,6 +58,13 @@ public:
     char advance();
     char peek(int index);
     void lex();
+    void parseInt();
+    void parseLiteral();
+    void parseString();
+    void addKeyword(std::string key, TokenType value);
+    TokenType getKeyword(std::string key);
+    void printResults();
+    bool isAtEnd();
 
     void addToken(TokenType type, const std::string &value=std::string());
 
