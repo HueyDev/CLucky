@@ -11,8 +11,7 @@ void interactiveScript(){
 }
 
 int main() {
-    Lexer* l = new Lexer("()[]()\"HELLO\"; TEST [[[]] ]; 127.98 @");
+    Lexer* l = new Lexer("()[]()\"HELLO\"; TEST [[[]] ]; 127.98");
     l->lex();
-    l->printResults();
     delete l;
 }
