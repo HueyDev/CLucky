@@ -2,7 +2,7 @@
 
 bool errorThrown = false;
 
-void throwError(std::string text, int line, int character=0){
+void throwError(const std::string& text, int line, int character){
 
   std::cout << "Compile error on line " << line << " character " << character << " \"" << text << "\"" << std::endl;
 

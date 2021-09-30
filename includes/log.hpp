@@ -1,5 +1,5 @@
 #pragma once
 
-void throwError(std::string text, int line, int character=0);
+void throwError(const std::string& text, int line, int character=0);
 
 bool isError();

@@ -11,6 +11,8 @@ void interactiveScript(){
 }
 
 int main() {
-    Lexer("()[]()\0").lex();
-    std::cout << "HELLO";
+    Lexer* l = new Lexer("()[]()\"HELLO\"; TEST [[[]] ]; 127.98 @");
+    l->lex();
+    l->printResults();
+    delete l;
 }
