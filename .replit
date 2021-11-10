@@ -1,1 +1,2 @@
+language = "bash"
 run="cd build;cmake ..;make;./LUCKY"

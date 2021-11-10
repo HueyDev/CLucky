@@ -2,65 +2,117 @@
 #include "lexer.hpp"
 
 
-class Expr{
-
+class Expr {
 public:
+  virtual ~Expr() = default;
 
-    virtual ~Expr(){}
-
-    template <typename T>
-    bool isInstance();
-
-
+  virtual Value *codegen() = 0;
 };
 
 
-class Binary : public Expr{
-
+class Primary : public Expr{
 public:
+    const char* value;
 
-    Expr* left;
-    Token* op;
-    Expr* right;
+    Primary(const char* v);
 
-    Binary(Expr* left, Token* op, Expr* right);
-    ~Binary();
+    Value *codegen() override;
 
+    ~Primary() override;
 }
 
-class Grouping : public Expr{
-
-public:
-
-    Expr* expression;
-
-    Grouping(Expr* exp);
-    ~Grouping();
-
-}
-
-class Literal : public Expr{
-
-public:
-
-    std::string value;
-
-    Literal(std::string value);
-    ~Literal();
-
-}
 
 class Unary : public Expr{
 
 public:
 
-    Token* op;
-    Expr* expression;
+    const char* op;
+    Expr* primary;
 
-    Unary(Token* op, Expr* exp);
-    ~Unary();
+    Unary(Expr* l, const char* o, Expr* r);
+
+    Value *codegen() override;
+
+    ~Unary() override;
+
 }
 
+
+class Factor : public Expr{
+
+public:
+
+    Expr* left;
+    const char* op;
+    Expr* right;
+
+    Factor(Expr* l, const char* o, Expr* r);
+
+    Value *codegen() override;
+
+    ~Factor() override;
+
+}
+
+
+class Term : public Expr{
+
+public:
+
+    Expr* left;
+    const char* op;
+    Expr* right;
+
+    Term(Expr* l, const char* o, Expr* r);
+
+    Value *codegen() override;
+
+    ~Term() override;
+
+}
+
+
+class Comparison : public Expr{
+
+public:
+
+    Expr* left;
+    const char* op;
+    Expr* right;
+
+    Comparison(Expr* l, const char* o, Expr* r);
+
+    Value *codegen() override;
+
+    ~Comparison() override;
+
+}
+
+
+class Equality : public Expr{
+
+public:
+
+    Expr* left;
+    const char* op;
+    Expr* right;
+
+    Equality(Expr* l, const char* o, Expr* r);
+
+    Value *codegen() override;
+
+    ~Equality() override;
+
+}
+
+
+class Expression : public Expr{
+
+public:
+    Expr* exp;
+
+    ~Expression();
+}
 
 
 
